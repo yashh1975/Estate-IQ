@@ -1,5 +1,8 @@
 # EstateIQ – Real‑Estate Price Prediction App
 
+🔗 **Live Application**  
+👉https://estate-iq.streamlit.app/
+
 ## 🎯 Project Overview
 EstateIQ is a **premium, visually stunning web application** that predicts real‑estate prices using a **real Machine‑Learning backend** (Scikit‑Learn & XGBoost) and a **luxury‑styled React frontend** built with **Vite** and **Tailwind CSS**. The app runs inside **Streamlit**, allowing you to serve the React UI as an embedded component while the heavy lifting (model training & inference) happens in Python.
 
