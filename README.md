@@ -147,4 +147,8 @@ This project is open‑source under the **MIT License**. Feel free to fork, modi
 
 ---
 
+## Author
+**Yash**
+
+---
 *Happy coding, and enjoy building your own real‑estate valuation wizard!*
