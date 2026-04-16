@@ -1,0 +1,50 @@
+ESTATE IQ - PROJECT ARCHITECTURE BREAKDOWN
+==========================================
+
+1. THE CORE SYSTEM
+------------------------------------------
+* app.py - The Brain.
+This evaluates all your Python Machine Learning. It hosts the Streamlit website, initializes the XGBoost and scikit-learn models, spins up the dataset, wraps the React UI, and funnels calculations between the math layers and the web layer.
+
+2. THE FRONTEND DIRECTORY (estate-iq/)
+------------------------------------------
+* dist/ - The Output. 
+This holds your "compiled" frontend. When we type 'npm run build', Vite minifies all the React files down into pure HTML/CSS logic so Streamlit can read it safely inside its iframe.
+
+* tailwind.config.js & index.css - The Paintbrush. 
+Holds the custom luxury color themes (Amber gold, dark navy), Google fonts (DM Sans, Playfair), and complex Glassmorphism UI properties.
+
+* App.jsx - The Orchestrator. 
+This is the parent layout file. It strings together all your web components (Hero, Tables, Graph) in order, and manages the primary communication "event listener" that catches the websocket payloads coming downwards from Streamlit/Python.
+
+3. THE COMPONENTS (src/components/)
+------------------------------------------
+* Hero.jsx - The glowing "Predict. Price. Profit." title banner.
+* HowItWorks.jsx - The 3 vertical steps explaining ML algorithms visually.
+* InputPanel.jsx - The glass card housing all your sliders, location dropdowns, and the "Predict" button that sends the JSON to Streamlit.
+* ResultsPanel.jsx - The area containing the dynamic counting cards for XGBoost, Random Forest, Linear, and the Ensemble consensus.
+* PredictionChart.jsx & HistoricalTrends.jsx - The two recharts-powered graphic visualization elements.
+* ModelComparisonTable.jsx - The static analytical breakdown table mapping out RMSE values and model descriptions.
+* FeatureImportance.jsx - The glowing animated horizontal progress bars showing which dimensions (Location, size, etc) dictate housing value the hardest.
+
+4. THE UTILITIES
+------------------------------------------
+* src/lib/simulation.js - 
+Once previously used for math, this now simply holds constants (like mapping what cities are allowed in the dropdown loop) and a formatting pipeline that correctly converts numbers like 12000000 into ₹1.20 Cr.
+
+5. INFRASTRUCTURE & CONFIGURATION
+------------------------------------------
+* package.json - The Blueprint.
+This is the master ledger of your Javascript project. It contains the names and exact versions of every library you installed (like react, framer-motion, recharts, and tailwindcss). It also defines your "scripts" so your computer knows what command to run when you type 'npm run build'.
+
+* package-lock.json - The Security Snapshot.
+When you install packages, internet libraries often get updated behind the scenes. This file "locks" the exact sub-version tree of every library the moment you downloaded them. This guarantees that if a teammate clones your code two years from now, their computer downloads the exact same versions yours did, preventing unexpected breaks.
+
+* vite.config.js - The Compiler.
+We used Vite instead of Create-React-App because it is lightning fast. This file tells Vite how to bundle your raw React .jsx code into minified, web-safe vanilla Javascript. Crucially, it sets base: './' so that Streamlit can successfully find your image and CSS assets without breaking paths.
+
+* postcss.config.js - The Style Translator.
+PostCSS is a tool that processes CSS files. This tiny file simply tells the compiler: "Hey, before you lock the CSS, pass it through Tailwind CSS so it can compile all those fancy custom utility classes (like bg-surface/30) into standard browser CSS."
+
+* eslint.config.js - The Code Police.
+ESLint scans your raw code for anti-patterns and typos before you even run it. It enforces rules preventing un-used variables and ensures rendering performance is maintained across the workspace.
